@@ -16,14 +16,11 @@
 });*/
 Route::get('/', 'page\PagesController@root')->name('root');
 Auth::routes();
-Route::group(['middleware' => 'auth','namespace'=>'page'], function() {
-    Route::get('/email_verify_notice', 'PagesController@emailVerifyNotice')->name('email_verify_notice');
-    //开始 测试用的 确保登录了
-    Route::group(['middleware' => 'email_verified'], function() {
-        Route::get('/test', function() {
-            return 'Your email is verified';
-        });
+Route::group(['middleware' => 'auth'], function() {
+    Route::group(['namespace' => 'email'],function (){
+        Route::get('/email_verify_notice', 'EmailVerificationController@emailVerifyNotice')->name('email_verify_notice');//邮箱通知
+        Route::get('/email_verification/verify', 'EmailVerificationController@verify')->name('email_verification.verify');//邮箱验证
+        Route::get('/email_verification/send', 'EmailVerificationController@send')->name('email_verification.send');//发送邮件
     });
-    //结束 测试
 
 });
