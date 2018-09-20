@@ -16,6 +16,7 @@
 });*/
 Route::get('/', 'page\PagesController@root')->name('root');
 Auth::routes();
+
 Route::group(['middleware' => 'auth'], function() {
     Route::group(['namespace' => 'email'],function (){
         Route::get('/email_verify_notice', 'EmailVerificationController@emailVerifyNotice')->name('email_verify_notice');//邮箱通知
@@ -24,9 +25,13 @@ Route::group(['middleware' => 'auth'], function() {
     });
 });
 
+
+
 Route::group(['middleware'=>'email_verified'],function (){
     Route::group(['namespace'=>'user'],function (){
-        Route::get('user_addresses', 'UserAddressesController@index')->name('user_addresses.index');
+        Route::get('user_addresses', 'UserAddressesController@index')->name('user_addresses.index');//地址列表
+        Route::get('user_addresses/create', 'UserAddressesController@create')->name('user_addresses.create');//创建地址页面
+        Route::post('user_addresses', 'UserAddressesController@store')->name('user_addresses.store');//新建地址
     });
 
 });
