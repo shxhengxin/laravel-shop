@@ -17,6 +17,11 @@
 Route::get('/', 'page\PagesController@root')->name('root');
 Auth::routes();
 
+Route::redirect('/', '/products')->name('root');
+Route::get('products', 'product\ProductsController@index')->name('products.index');
+
+
+
 Route::group(['middleware' => 'auth'], function() {
     Route::group(['namespace' => 'email'],function (){
         Route::get('/email_verify_notice', 'EmailVerificationController@emailVerifyNotice')->name('email_verify_notice');//邮箱通知
