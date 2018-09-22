@@ -18,8 +18,8 @@ Route::get('/', 'page\PagesController@root')->name('root');
 Auth::routes();
 
 Route::redirect('/', '/products')->name('root');
-Route::get('products', 'product\ProductsController@index')->name('products.index');
-Route::get('products/{product}', 'product\ProductsController@show')->name('products.show');
+Route::get('products', 'product\ProductsController@index')->name('products.index');//商品列表
+Route::get('products/{product}', 'product\ProductsController@show')->name('products.show');//商品详情
 
 
 Route::group(['middleware' => 'auth'], function() {
@@ -37,6 +37,8 @@ Route::group(['middleware' => 'auth'], function() {
             Route::get('user_addresses/{user_address}', 'UserAddressesController@edit')->name('user_addresses.edit');//编辑地址
             Route::put('user_addresses/{user_address}', 'UserAddressesController@update')->name('user_addresses.update');//修改地址
             Route::delete('user_addresses/{user_address}', 'UserAddressesController@destroy')->name('user_addresses.destroy');//删除
+            Route::post('products/{product}/favorite', 'ProductsController@favor')->name('products.favor');//商品收藏
+            Route::delete('products/{product}/favorite', 'ProductsController@disfavor')->name('products.disfavor');//商品取消收藏
         });
 
     });
