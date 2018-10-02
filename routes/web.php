@@ -43,7 +43,9 @@ Route::group(['middleware' => 'auth'], function() {
         });
 
         Route::group(['namespace'=>'cart'],function (){
-            Route::post('cart', 'CartController@add')->name('cart.add');
+            Route::get('cart', 'CartController@index')->name('cart.index');//查看购物车商品
+            Route::post('cart', 'CartController@add')->name('cart.add');//加入购物车
+            Route::delete('cart/{sku}', 'CartController@remove')->name('cart.remove');
         });
 
     });
