@@ -42,6 +42,10 @@ Route::group(['middleware' => 'auth'], function() {
             Route::get('products/favorites', 'ProductsController@favorites')->name('products.favorites');//收藏列表
         });
 
+        Route::group(['namespace'=>'cart'],function (){
+            Route::post('cart', 'CartController@add')->name('cart.add');
+        });
+
     });
 });
 
