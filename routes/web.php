@@ -49,6 +49,7 @@ Route::group(['middleware' => 'auth'], function() {
         });
         Route::group(['namespace'=>'order'],function (){
             Route::post('orders', 'OrdersController@store')->name('orders.store');
+            Route::get('orders', 'OrdersController@index')->name('orders.index');
         });
 
     });

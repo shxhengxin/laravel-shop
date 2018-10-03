@@ -31,6 +31,12 @@ class ProductSku extends Model
 
     }
 
+    /**
+     * @desc 订单未支付，库存加上订单时减去的库存量
+     * @Author shenhengxin
+     * @param $amount
+     * @throws InternalException
+     */
     public function addStock($amount)
     {
         if ($amount < 0) {

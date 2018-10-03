@@ -15,6 +15,22 @@ use DB;
 
 class OrdersController extends Controller
 {
+    public function index(Request $request) {
+        $orders = Order::query()
+            // 使用 with 方法预加载，避免N + 1问题
+            ->with(['items.product', 'items.productSku'])
+            ->where('user_id', $request->user()->id)
+            ->orderBy('created_at', 'desc')
+            ->paginate();
+        return view('orders.index', ['orders' => $orders]);
+    }
+
+    /**
+     * @desc 订单处理
+     * @Author shenhengxin
+     * @param OrderRequest $request
+     * @return mixed
+     */
     public function store(OrderRequest $request) {
         $user = $request->user();
         //开启一个数据库事务
