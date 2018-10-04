@@ -20,6 +20,7 @@ Auth::routes();
 Route::redirect('/', '/products')->name('root');
 
 Route::group(['middleware' => 'auth'], function() {
+
     Route::group(['namespace' => 'email'],function (){
         Route::get('/email_verify_notice', 'EmailVerificationController@emailVerifyNotice')->name('email_verify_notice');//邮箱通知
         Route::get('/email_verification/verify', 'EmailVerificationController@verify')->name('email_verification.verify');//邮箱验证
@@ -51,9 +52,10 @@ Route::group(['middleware' => 'auth'], function() {
             Route::post('orders', 'OrdersController@store')->name('orders.store');
             Route::get('orders', 'OrdersController@index')->name('orders.index');
             Route::get('orders/{order}', 'OrdersController@show')->name('orders.show');
-            Route::post('orders/{order}/received', 'OrdersController@received')->name('orders.received');
+            Route::post('orders/{order}/received', 'OrdersController@received')->name('orders.received'); //确认收货
             Route::get('orders/{order}/review', 'OrdersController@review')->name('orders.review.show');
             Route::post('orders/{order}/review', 'OrdersController@sendReview')->name('orders.review.store');
+            Route::post('orders/{order}/apply_refund', 'OrdersController@applyRefund')->name('orders.apply_refund');
         });
 
         Route::group(['namespace'=>'pay'],function (){

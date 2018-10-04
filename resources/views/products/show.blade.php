@@ -55,6 +55,7 @@
                             </div>
                             <div role="tabpanel" class="tab-pane" id="product-reviews-tab">
                                 <!-- 评论列表开始 -->
+                                @if(count($reviews))
                                 <table class="table table-bordered table-striped">
                                     <thead>
                                     <tr>
@@ -77,6 +78,9 @@
                                     @endforeach
                                     </tbody>
                                 </table>
+                                @else
+                                    <span style="color: red;margin-left: 45%;">暂无评论</span>
+                                @endif
                                 <!-- 评论列表结束 -->
                             </div>
                         </div>
