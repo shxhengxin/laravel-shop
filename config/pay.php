@@ -6,6 +6,7 @@
  * Created on 2018/10/3 17:35
  */
 // https://openhome.alipay.com/platform/appDaily.htm?tab=info
+//jufvgs2806@sandbox.com  111111
 return [
     'alipay' => [
         'app_id'         => '2016102900777544',

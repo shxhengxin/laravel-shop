@@ -53,9 +53,16 @@ Route::group(['middleware' => 'auth'], function() {
             Route::get('orders/{order}', 'OrdersController@show')->name('orders.show');
         });
 
+        Route::group(['namespace'=>'pay'],function (){
+            Route::get('payment/{order}/alipay', 'PaymentController@payByAlipay')->name('payment.alipay');
+            Route::get('payment/alipay/return', 'PaymentController@alipayReturn')->name('payment.alipay.return');
+        });
+
     });
 });
 
 
 Route::get('products', 'product\ProductsController@index')->name('products.index');//商品列表
 Route::get('products/{product}', 'product\ProductsController@show')->name('products.show');//商品详情
+
+Route::post('payment/alipay/notify', 'pay\PaymentController@alipayNotify')->name('payment.alipay.notify');
