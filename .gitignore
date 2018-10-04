@@ -9,6 +9,7 @@
 /vendor
 /.idea
 /.vagrant
+/resources/wechat_pay
 Homestead.json
 Homestead.yaml
 npm-debug.log
