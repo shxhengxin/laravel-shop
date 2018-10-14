@@ -35,14 +35,12 @@ Route::group(['middleware' => 'auth'], function() {
             Route::get('user_addresses/{user_address}', 'UserAddressesController@edit')->name('user_addresses.edit');//编辑地址
             Route::put('user_addresses/{user_address}', 'UserAddressesController@update')->name('user_addresses.update');//修改地址
             Route::delete('user_addresses/{user_address}', 'UserAddressesController@destroy')->name('user_addresses.destroy');//删除
-
         });
         Route::group(['namespace'=>'product'],function (){
             Route::post('products/{product}/favorite', 'ProductsController@favor')->name('products.favor');//商品收藏
             Route::delete('products/{product}/favorite', 'ProductsController@disfavor')->name('products.disfavor');//商品取消收藏
             Route::get('products/favorites', 'ProductsController@favorites')->name('products.favorites');//收藏列表
         });
-
         Route::group(['namespace'=>'cart'],function (){
             Route::get('cart', 'CartController@index')->name('cart.index');//查看购物车商品
             Route::post('cart', 'CartController@add')->name('cart.add');//加入购物车
@@ -57,11 +55,13 @@ Route::group(['middleware' => 'auth'], function() {
             Route::post('orders/{order}/review', 'OrdersController@sendReview')->name('orders.review.store');
             Route::post('orders/{order}/apply_refund', 'OrdersController@applyRefund')->name('orders.apply_refund');
         });
-
         Route::group(['namespace'=>'pay'],function (){
             Route::get('payment/{order}/alipay', 'PaymentController@payByAlipay')->name('payment.alipay');
             Route::get('payment/alipay/return', 'PaymentController@alipayReturn')->name('payment.alipay.return');
             Route::get('payment/{order}/wechat', 'PaymentController@payByWechat')->name('payment.wechat');
+        });
+        Route::group(['namespace'=>'coupon'],function (){
+            Route::get('coupon_codes/{code}', 'CouponCodesController@show')->name('coupon_codes.show');
         });
 
     });
