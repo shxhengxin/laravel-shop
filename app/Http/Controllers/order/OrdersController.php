@@ -5,7 +5,6 @@ namespace App\Http\Controllers\order;
 use App\Events\OrderReviewd;
 use App\Exceptions\CouponCodeUnavailableException;
 use App\Exceptions\InvalidRequestException;
-use App\Http\Requests\Admin\HandleRefundRequest;
 use App\Http\Requests\ApplyRefundRequest;
 use App\Http\Requests\OrderRequest;
 use App\Http\Requests\SendReviewRequest;
@@ -49,8 +48,9 @@ class OrdersController extends Controller
             }
         }
 
-        return $orderService->store($user,$address, $request->input('remark'), $request->input('items'),$coupon);
+         $data = $orderService->store($user,$address, $request->input('remark'), $request->input('items'),$coupon);
 
+       return $data;
     }
 
     public function show(Order $order, Request $request)

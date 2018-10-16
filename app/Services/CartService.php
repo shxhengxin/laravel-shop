@@ -9,8 +9,9 @@
 
 namespace App\Services;
 
-use Auth;
+
 use App\Models\CartItem;
+use Auth;
 
 class CartService
 {
