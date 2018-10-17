@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3502b55ffba92920c707eede77c95c03",
+    "content-hash": "9b79cd8bc4a41a366917093606eb75af",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -722,16 +722,16 @@
         },
         {
             "name": "encore/laravel-admin",
-            "version": "v1.6.3",
+            "version": "v1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/z-song/laravel-admin.git",
-                "reference": "5d6aa672f918df80d012fd8fafb5dd7b191146d4"
+                "reference": "f9d42460b31b07e1f2d2c05fffca15c3d09bf655"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/z-song/laravel-admin/zipball/5d6aa672f918df80d012fd8fafb5dd7b191146d4",
-                "reference": "5d6aa672f918df80d012fd8fafb5dd7b191146d4",
+                "url": "https://api.github.com/repos/z-song/laravel-admin/zipball/f9d42460b31b07e1f2d2c05fffca15c3d09bf655",
+                "reference": "f9d42460b31b07e1f2d2c05fffca15c3d09bf655",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -795,7 +795,7 @@
                 "grid",
                 "laravel"
             ],
-            "time": "2018-09-20T05:21:42+00:00"
+            "time": "2018-09-09T08:40:17+00:00"
         },
         {
             "name": "endroid/qr-code",

@@ -7,7 +7,7 @@
     "require": {
         "php": ">=7.0.0",
         "caouecs/laravel-lang": "^3.0",
-        "encore/laravel-admin": "^1.5",
+        "encore/laravel-admin": "1.6.0",
         "endroid/qr-code": "^2.5",
         "fideloper/proxy": "~3.3",
         "laravel/framework": "5.5.*",
