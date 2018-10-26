@@ -6,12 +6,13 @@ use App\Exceptions\InvalidRequestException;
 use App\Models\Category;
 use App\Models\OrderItem;
 use App\Models\Product;
+use App\Services\CategoryService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class ProductsController extends Controller
 {
-    public function index(Request $request,Product $product) {
+    public function index(Request $request,Product $product,CategoryService $categoryService) {
         $builder = $product->query()->where('on_sale',true);
         if($search = $request->input('search','')) {
             $like = '%'.$search.'%';
@@ -54,6 +55,8 @@ class ProductsController extends Controller
             'products' => $products,
             'filters'  => ['search' => $search,'order'  => $order],
             'category' => $category ?? null,
+            // 将类目树传递给模板文件
+            'categoryTree' => $categoryService->getCategoryTree(),
         ]);
     }
 
