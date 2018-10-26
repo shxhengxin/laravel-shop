@@ -23,7 +23,7 @@ $factory->define(App\Models\Product::class, function (Faker $faker) {
         'title'        => $faker->word,
         'description'  => $faker->sentence,
         'image'        => $image,
-        'on_sale'      => true,
+        'on_sale'      => $faker->randomElement([false,true]),
         'rating'       => $faker->numberBetween(0, 5),
         'sold_count'   => 0,
         'review_count' => 0,
