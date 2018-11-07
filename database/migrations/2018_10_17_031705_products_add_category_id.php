@@ -14,7 +14,7 @@ class ProductsAddCategoryId extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->unsignedInteger('category_id')->nullable()->after('id');
+            $table->unsignedInteger('category_id')->nullable()->after('id')->comment('栏目id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('set null');
         });
     }

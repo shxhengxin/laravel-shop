@@ -14,7 +14,7 @@ class ProductsAddType extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->string('type')->after('id')->default(\App\Models\Product::TYPE_NORMAL)->index();
+            $table->string('type')->after('id')->default(\App\Models\Product::TYPE_NORMAL)->index()->comment('商品类型');
         });
     }
 
