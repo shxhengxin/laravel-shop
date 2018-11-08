@@ -18,6 +18,8 @@ class UserAddress extends Model
     ];
     protected $dates = ['last_used_at'];
 
+    protected $appends = ['full_address'];
+
     /**
      * @desc 地址---用户
      * @Author shenhengxin
