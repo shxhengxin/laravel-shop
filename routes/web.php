@@ -66,12 +66,16 @@ Route::group(['middleware' => 'auth'], function() {
         Route::group(['namespace'=>'install'],function (){
             Route::get('installments', 'InstallmentsController@index')->name('installments.index');
             Route::get('installments/{installment}', 'InstallmentsController@show')->name('installments.show');
+            Route::get('installments/{installment}/alipay', 'InstallmentsController@payByAlipay')->name('installments.alipay');
+            Route::get('installments/alipay/return', 'InstallmentsController@alipayReturn')->name('installments.alipay.return');
+
         });
 
     });
 });
 
-
+// 后端回调不能放在 auth 中间件中
+Route::post('installments/alipay/notify', 'InstallmentsController@alipayNotify')->name('installments.alipay.notify');
 Route::get('products', 'product\ProductsController@index')->name('products.index');//商品列表
 Route::get('products/{product}', 'product\ProductsController@show')->name('products.show');//商品详情
 
