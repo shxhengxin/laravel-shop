@@ -49,11 +49,5 @@ class RefundCrowdfundingOrders implements ShouldQueue
                 $orderService->refundOrder($order);
             });
     }
-    protected function crowdfundingFailed(CrowdfundingProduct $crowdfunding)
-    {
-        $crowdfunding->update([
-            'status' => CrowdfundingProduct::STATUS_FAIL,
-        ]);
-        dispatch(new RefundCrowdfundingOrders($crowdfunding));
-    }
+
 }

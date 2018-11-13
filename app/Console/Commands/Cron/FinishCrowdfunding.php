@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands\Cron;
 
+use App\Jobs\RefundCrowdfundingOrders;
 use App\Models\CrowdfundingProduct;
 use App\Models\Order;
 use App\Services\OrderService;
@@ -74,20 +75,6 @@ class FinishCrowdfunding extends Command
         $crowdfunding->update([
             'status' => CrowdfundingProduct::STATUS_FAIL,
         ]);
-        // 查询出所有参与了此众筹的订单
-        Order::query()
-            // 订单类型为众筹商品订单
-            ->where('type', Order::TYPE_CROWDFUNDING)
-            // 已支付的订单
-            ->whereNotNull('paid_at')
-            ->whereHas('items', function ($query) use ($crowdfunding) {
-                // 包含了当前商品
-                $query->where('product_id', $crowdfunding->product_id);
-            })
-            ->get()
-            ->each(function (Order $order,OrderService $orderService) {
-                // todo 调用退款逻辑
-                $orderService->refundOrder($order);
-            });
+        dispatch(new RefundCrowdfundingOrders($crowdfunding));
     }
 }
