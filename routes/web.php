@@ -65,6 +65,9 @@ Route::group(['middleware' => 'auth'], function() {
         Route::group(['namespace'=>'coupon'],function (){
             Route::get('coupon_codes/{code}', 'CouponCodesController@show')->name('coupon_codes.show');
         });
+        Route::group(['namespace'=>'install'],function (){
+            Route::get('installments', 'InstallmentsController@index')->name('installments.index');
+        });
 
     });
 });
