@@ -68,7 +68,7 @@ Route::group(['middleware' => 'auth'], function() {
             Route::get('installments/{installment}', 'InstallmentsController@show')->name('installments.show');
             Route::get('installments/{installment}/alipay', 'InstallmentsController@payByAlipay')->name('installments.alipay');
             Route::get('installments/alipay/return', 'InstallmentsController@alipayReturn')->name('installments.alipay.return');
-
+            Route::get('installments/{installment}/wechat', 'InstallmentsController@payByWechat')->name('installments.wechat');
         });
 
     });
@@ -82,3 +82,4 @@ Route::get('products/{product}', 'product\ProductsController@show')->name('produ
 Route::post('payment/wechat/refund_notify', 'pay\PaymentController@wechatRefundNotify')->name('payment.wechat.refund_notify');
 Route::post('payment/alipay/notify', 'pay\PaymentController@alipayNotify')->name('payment.alipay.notify');
 Route::post('payment/wechat/notify', 'pay\PaymentController@wechatNotify')->name('payment.wechat.notify');
+Route::post('installments/wechat/notify', 'install\InstallmentsController@wechatNotify')->name('installments.wechat.notify');
