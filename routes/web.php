@@ -75,10 +75,10 @@ Route::group(['middleware' => 'auth'], function() {
 });
 
 // 后端回调不能放在 auth 中间件中
-Route::post('installments/alipay/notify', 'InstallmentsController@alipayNotify')->name('installments.alipay.notify');
+Route::post('installments/alipay/notify', 'installments\InstallmentsController@alipayNotify')->name('installments.alipay.notify');
 Route::get('products', 'product\ProductsController@index')->name('products.index');//商品列表
 Route::get('products/{product}', 'product\ProductsController@show')->name('products.show');//商品详情
 
-Route::post('payment/wechat/refund_notify', 'PaymentController@wechatRefundNotify')->name('payment.wechat.refund_notify');
+Route::post('payment/wechat/refund_notify', 'pay\PaymentController@wechatRefundNotify')->name('payment.wechat.refund_notify');
 Route::post('payment/alipay/notify', 'pay\PaymentController@alipayNotify')->name('payment.alipay.notify');
-Route::post('payment/wechat/notify', 'PaymentController@wechatNotify')->name('payment.wechat.notify');
+Route::post('payment/wechat/notify', 'pay\PaymentController@wechatNotify')->name('payment.wechat.notify');
